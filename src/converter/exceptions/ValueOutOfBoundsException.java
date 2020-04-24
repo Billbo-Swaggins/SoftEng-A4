@@ -7,7 +7,8 @@ package converter.exceptions;
  * @version 1/31/2019
  */
 public class ValueOutOfBoundsException extends Exception {
-
+    //max value = 2999 = MMEDZYKJ
+    //min val
     /**
      * Constructor with a descriptive message for the value out of bounds exception.
      *
