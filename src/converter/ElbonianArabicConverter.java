@@ -1,6 +1,7 @@
 package converter;
 
 import java.lang.String;
+import java.util.regex.Pattern;
 
 import converter.exceptions.MalformedNumberException;
 import converter.exceptions.ValueOutOfBoundsException;
@@ -41,9 +42,39 @@ public class ElbonianArabicConverter {
      *
      * @return An arabic value
      */
-    public int toArabic() {
-        // TODO Fill in the method's body
-        return 1;
+    public int toArabic() throws MalformedNumberException {
+        String s = number;
+        int toReturn = 0;
+
+        if (isValidElboNum()) {
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+
+                if (c == 'M') {
+                    toReturn += 1000;
+                } else if (c == 'E') {
+                    toReturn += 600;
+                } else if (c == 'D') {
+                    toReturn += 300;
+                } else if (c == 'C') {
+                    toReturn += 100;
+                } else if (c == 'Z') {
+                    toReturn += 60;
+                } else if (c == 'Y') {
+                    toReturn += 30;
+                } else if (c == 'X') {
+                    toReturn += 10;
+                } else if (c == 'K') {
+                    toReturn += 6;
+                } else if (c == 'J') {
+                    toReturn += 3;
+                } else if (c == 'I') {
+                    toReturn += 1;
+                }
+            }
+        }
+
+        return toReturn;
     }
 
     /**
@@ -51,9 +82,47 @@ public class ElbonianArabicConverter {
      *
      * @return An Elbonian value
      */
-    public String toElbonian() {
-        // TODO Fill in the method's body
-        return "I";
+    public String toElbonian() throws ValueOutOfBoundsException, MalformedNumberException {
+        String s = number; //ex. "115"
+        String answer = "";
+        if (isValidArabNum()) {
+            int x = Integer.parseInt(s);
+            while (x > 0) {
+                if (x >= 1000) {
+                    answer += "M";
+                    x -= 1000;
+                } else if (x >= 600) {
+                    answer += "E";
+                    x -= 600;
+                } else if (x >= 300) {
+                    answer += "D";
+                    x -= 300;
+                } else if (x >= 100) {
+                    answer += "C";
+                    x -= 100;
+                } else if (x >= 60) {
+                    answer += "Z";
+                    x -= 60;
+                } else if (x >= 30) {
+                    answer += "Y";
+                    x -= 30;
+                } else if (x >= 10) {
+                    answer += "X";
+                    x -= 10;
+                } else if (x >= 6) {
+                    answer += "K";
+                    x -= 6;
+                } else if (x >= 3) {
+                    answer += "J";
+                    x -= 3;
+                } else if (x >= 1) {
+                    answer += "I";
+                    x -= 1;
+                }
+            }
+
+        }
+        return answer;
     }
 
     /**
@@ -70,7 +139,10 @@ public class ElbonianArabicConverter {
             throw new MalformedNumberException("Invalid Integer");
         }
 
-        return (x >= 0 && x < 3000);
+        if (x <= 0 || x >= 3000) {
+            throw new ValueOutOfBoundsException("Integer out of bounds");
+        }
+        return true;
     }
 
     /* RULES
@@ -85,7 +157,7 @@ public class ElbonianArabicConverter {
             The letter D would never appear before E or M but would appear before Y.
             The letters are summed together to determine the value.
     •	Lowercase letters are not permitted
-     */
+     */ //rules
 
     /**
      * checks the first rule
@@ -299,6 +371,7 @@ public class ElbonianArabicConverter {
                     if (containMSmaller) {
                         throw new MalformedNumberException("Numerals Out Of Order");
                     }
+                    break;
 
                 case 'E':
                     if (containESmaller) {
@@ -419,10 +492,20 @@ public class ElbonianArabicConverter {
 
     public Boolean isValidElboNum() throws MalformedNumberException {
         //check validity of Elbonian number
+
+        if (stringContainsNumber(number)) {
+            throw new MalformedNumberException("Elbonian numbers cannot contain Arabic numerals");
+        }
+
+
         if (!(ruleOne() && ruleTwo() && ruleThree() && ruleFour() && ruleFive() && ruleSix() && ruleSeven())) {
             throw new MalformedNumberException("Something didn't go right");
         }
         return true;
+    }
+
+    private boolean stringContainsNumber(String s) {
+        return Pattern.compile("[0-9]").matcher(s).find();
     }
 
 }
