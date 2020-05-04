@@ -302,4 +302,258 @@ public class ConverterTests {
         conv.isValidArabNum();
     }
 
+
+    // "failed" grading tests...
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest1() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("1M");
+        converter.toElbonian();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest2() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MKJI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest3() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("CMXI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest4() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("EMXI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest5() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MIX");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest6() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MJKI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest7() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("KMJI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest8() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("CXIM");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest9() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MXCI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest10() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("YMX");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest11() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MYZX");
+        converter.toArabic();
+    }
+
+    // ok this one actually fails :/ -2
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest12() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("M M");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest13() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("1");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest14() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter(" 1");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest15() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("DMXI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest16() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MCCCCX");
+        converter.toArabic();
+    }
+
+    @Test(expected = ValueOutOfBoundsException.class)
+    public void wtfTest17() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("3000");
+        converter.toElbonian();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest18() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("EDDZYKJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest19() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("EEDZYKJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest20() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MCXIIII");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest21() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MZYXI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest22() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("EDZYKJJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest23() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("EDZYKKJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest24() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MMMMCXI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest25() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MXXXXI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest26() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("EDZZYKJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = ValueOutOfBoundsException.class)
+    public void wtfTest27() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("-1");
+        converter.toElbonian();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest28() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MCDE");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest29() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("EDZYKJJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest30() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MEJZYKD");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest31() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MEYZDKJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest32() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("I");
+        converter.toElbonian();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest33() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MKDZEJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest34() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MZDEYKJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = ValueOutOfBoundsException.class)
+    public void wtfTest35() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("0");
+        converter.toElbonian();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest36() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MZXY");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest37() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MEDZJKY");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest38() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MEDKYZJ");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest39() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("k");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest40() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter(" I");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest41() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MEDCI");
+        converter.toArabic();
+    }
+
+    @Test(expected = MalformedNumberException.class)
+    public void wtfTest42() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MPX");
+        converter.toArabic();
+    }
 }
