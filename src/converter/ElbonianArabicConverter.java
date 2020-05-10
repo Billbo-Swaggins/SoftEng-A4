@@ -337,6 +337,19 @@ public class ElbonianArabicConverter {
         return true;
     }
 
+    private boolean validChars() throws MalformedNumberException {
+        for(char c : number.toCharArray()) {
+            String s = String.valueOf(c);
+            if (!(s.equalsIgnoreCase("M") || s.equalsIgnoreCase("E")
+            || s.equalsIgnoreCase("D") || s.equalsIgnoreCase("C")
+            || s.equalsIgnoreCase("Z") || s.equalsIgnoreCase("Y")
+            || s.equalsIgnoreCase("X") || s.equalsIgnoreCase("K")
+            || s.equalsIgnoreCase("J") || s.equalsIgnoreCase("I"))) {
+                throw new MalformedNumberException("invalid character!");
+            }
+        }
+        return true;
+    }
 
     /**
      * Numbers are represented by the letters from the greatest value down to the lowest value.
@@ -489,16 +502,23 @@ public class ElbonianArabicConverter {
         return true;
     }
 
+    private boolean noSpace() throws MalformedNumberException {
+        if(number.contains(" ")) {
+            throw new MalformedNumberException("Number cannot contain spaces!");
+        }
+        return true;
+    }
+
 
     public Boolean isValidElboNum() throws MalformedNumberException {
         //check validity of Elbonian number
+
 
         if (stringContainsNumber(number)) {
             throw new MalformedNumberException("Elbonian numbers cannot contain Arabic numerals");
         }
 
-
-        if (!(ruleOne() && ruleTwo() && ruleThree() && ruleFour() && ruleFive() && ruleSix() && ruleSeven())) {
+        if (!(validChars() && noSpace() && ruleOne() && ruleTwo() && ruleThree() && ruleFour() && ruleFive() && ruleSix() && ruleSeven())) {
             throw new MalformedNumberException("Something didn't go right");
         }
         return true;
